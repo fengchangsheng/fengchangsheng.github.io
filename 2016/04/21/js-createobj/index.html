@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Javascript创建对象的几种方式 | 你的指尖，有改变世界的力量</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Javascript创建对象的几种方式 | 你的指尖，有改变世界的力量">
+    <meta name="twitter:description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Javascript创建对象的几种方式 | 你的指尖，有改变世界的力量">
+    <meta property="og:description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    
+    <meta name="author" content="Lucare.Feng">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="你的指尖，有改变世界的力量" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/04/21/js-createobj/"/>
+
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+<body class="home-template no-js">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 你的指尖，有改变世界的力量 的主页"><img src="/images/avatar.jpg" width="80" alt="你的指尖，有改变世界的力量 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 你的指尖，有改变世界的力量">你的指尖，有改变世界的力量</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/favourite">黄金屋</a></li>
+            
+              <li class="navigation__item"><a href="/favourite/time.html">时光机</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/fengchangsheng" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/onlymonniya" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-04-21T15:10:44.487Z" class="post-list__meta--date date">2016-04-21</time> &#8226; <span class="post-meta__tags tags">于&nbsp;</span>
+    </div>
+    <h1 class="post-title">Javascript创建对象的几种方式</h1>
+  </header>
+
+  <section class="post">
+    <h2 id="一、工厂模式"><a href="#一、工厂模式" class="headerlink" title="一、工厂模式"></a>一、工厂模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function createPerson(name,age,job)&#123;  </span><br><span class="line">    var o = new Object();  </span><br><span class="line">    o.name = name;  </span><br><span class="line">    o.age = age;  </span><br><span class="line">    o.job = job;  </span><br><span class="line">    o.sayName = function () &#123;  </span><br><span class="line">        alert(this.name);  </span><br><span class="line">    &#125;  </span><br><span class="line">    return o;  </span><br><span class="line">&#125;</span><br><span class="line">var person1 = createPerson(&quot;Nicholas&quot;,29,&quot;Software Engineer&quot;);  </span><br><span class="line">var person2 = createPerson(&quot;Greg&quot;,27,&quot;Doctor&quot;);</span><br></pre></td></tr></table></figure>
+<h2 id="二、构造函数模式"><a href="#二、构造函数模式" class="headerlink" title="二、构造函数模式"></a>二、构造函数模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,job)&#123;  </span><br><span class="line">    this.name = name;  </span><br><span class="line">    this.age = age;  </span><br><span class="line">    this.job = job;  </span><br><span class="line">    this.sayName = function()&#123;  </span><br><span class="line">        alert(this.name);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">var person1 = new Person(&quot;Nicholas&quot;,29,&quot;Software Engineer&quot;);  </span><br><span class="line">var person2 = new Person(&quot;Greg&quot;,27,&quot;Doctor&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="1-将构造函数当做函数"><a href="#1-将构造函数当做函数" class="headerlink" title="1.将构造函数当做函数"></a>1.将构造函数当做函数</h3><p>　　构造函数与其他函数的唯一区别就是调用他们的方式不同，任何函数只要通过new来调用，那它就可以作为构造函数。通常情况下我们将构造函数首字母大写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//当做构造函数调用  </span><br><span class="line">var person = new Person(&quot;Nicholas&quot;,29,&quot;Software Engineer&quot;);  </span><br><span class="line">person.sayName();    </span><br><span class="line">//作为普通函数滴啊用  </span><br><span class="line">Person(&quot;Greg&quot;,27,&quot;Doctor&quot;);//添加到window  </span><br><span class="line">window.sayName();  </span><br><span class="line">//在另一个对象的作用域中调用  </span><br><span class="line">var o = new Object();  </span><br><span class="line">Person.call(o,&quot;Lucare&quot;,24,&quot;Engineer&quot;);  </span><br><span class="line">o.sayName();</span><br></pre></td></tr></table></figure>
+<h3 id="2-构造函数的问题"><a href="#2-构造函数的问题" class="headerlink" title="2.构造函数的问题"></a>2.构造函数的问题</h3><p>　　每个方法都要在每个实例上创新创建一遍，函数也是对象，因此没定义个函数，也就实例化了一个对象。从逻辑角度讲，此时的构造函数相当于这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,job)&#123;  </span><br><span class="line">    this.name = name;  </span><br><span class="line">    this.age = age;  </span><br><span class="line">    this.job = job;  </span><br><span class="line">    this.sayName = new Function(&quot;alert(this.name)&quot;);//与声明函数在逻辑上是等价的。  </span><br><span class="line">&#125;  </span><br><span class="line">//改进：  </span><br><span class="line">function Person(name,age,job)&#123;  </span><br><span class="line">    this.name = name;  </span><br><span class="line">    this.age = age;  </span><br><span class="line">    this.job = job;  </span><br><span class="line">    this.sayName = sayName;  </span><br><span class="line">&#125;   </span><br><span class="line">function sayName()&#123;  </span><br><span class="line">    alert(this.name);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>转移到外部可以解决上面的问题，共享一个sayName函数  但是在全局作用域中定义的函数实际上只能被某个对象调用，这让全局作用域有点名不副实。如果对象需要定义很多方法，那么就要定义很多个全局函数，于是这个自定义的引用类型就没有丝毫封装性可言了。好在我们可以通过原型模式来解决。</p>
+<h2 id="三、原型模式"><a href="#三、原型模式" class="headerlink" title="三、原型模式"></a>三、原型模式</h2><p>　　我们创建的每一个函数都有一个prototype(原型)属性，这个属性是一个指针，指向一个对象，而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。按字面意思来理解，那么prototype就是通过调用构造函数而创建的那个对象实例的原型对象。使用原型对象的好处就是可以让所有对象实例共享它所包含的属性和方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;  </span><br><span class="line">&#125;    </span><br><span class="line">Person.prototype.name = &quot;Lucare&quot;;  </span><br><span class="line">Person.prototype.age = 24;  </span><br><span class="line">Person.prototype.job = &quot;Engineer&quot;;  </span><br><span class="line">Person.prototype.sayName = function()&#123;  </span><br><span class="line">    alert(this.name);  </span><br><span class="line">&#125;    </span><br><span class="line">var person1 = new Person();  </span><br><span class="line">person1.sayName();//Lucare    </span><br><span class="line">var person2 = new Person();  </span><br><span class="line">person2.sayName();//Lucare   </span><br><span class="line">alert(person1.sayName == person2.sayName);//true</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-理解原型对象"><a href="#1-理解原型对象" class="headerlink" title="1.理解原型对象"></a>1.理解原型对象</h3><p>　　无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor(构造函数)属性，这个属性包含一个指向prototype属性所在函数的指针。创建了自定义的构造函数之后，其原型对象默认都会自动获得一个constructor属性，至于其他方法，则都是从object继承而来。当调用构造函数创建一个新实例后，该实例的内部将包含一个指针（内部属性），指向构造函数的原型对象。<br>每当代码读取某个对象的某个属性时，都会执行一次搜索，首先从对象实例本身开始。如果实例中找到则返回该属性的值，没找到则搜索指针指向的原型对象。 </p>
+<h3 id="2-原型与in操作符"><a href="#2-原型与in操作符" class="headerlink" title="2.原型与in操作符"></a>2.原型与in操作符</h3><p>　　单独使用：alert(“name” in person1);//true    in操作符会在通过对象能够访问给定属性时返回true  无论该属性存在于实例还是原型中使用hasOwnProperty()方法：可以检测一个属性是存在于实例中还是存在于原型中(object继承而来) 存在于对象实例中才会返回true.<br>so：确定该属性是存在于对象中还是存在于原型中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function hasPrototypeProperty(object,name)&#123;  </span><br><span class="line">    return !object.hasOwnProperty(name) &amp;&amp; (name in object);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-更简单的原型语法"><a href="#3-更简单的原型语法" class="headerlink" title="3.更简单的原型语法"></a>3.更简单的原型语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;  </span><br><span class="line">&#125;  </span><br><span class="line">Person.prototype = &#123;  </span><br><span class="line">    name:&quot;Lucare&quot;,  </span><br><span class="line">    age:24,  </span><br><span class="line">    job:&quot;Engineer&quot;,  </span><br><span class="line">    sayName:function()&#123;  </span><br><span class="line">        alert(this.name);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>将Person.prototype设置为等于一个对象字面量形式创建新对象。但是constructor属性不再指向Person了。</p>
+<h3 id="4-原型的动态性"><a href="#4-原型的动态性" class="headerlink" title="4.原型的动态性"></a>4.原型的动态性</h3><p>　　由于在原型中查找值的过程是一次搜索，因此我们对原型对象所做的任何修改都能够立即从实例上反映出来–即使是先创建了实例后修改原型也照样如此。其原因归结于实例和原型之间松散的连接关系，这种连接仅仅是一个指针，而非一个副本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var friend = new Person();  </span><br><span class="line">Person.prototype.sayHi = function()&#123;  </span><br><span class="line">    alert(&quot;hi&quot;);  </span><br><span class="line">&#125;  </span><br><span class="line">friend.sayHi();//&quot;hi&quot; 没有问题  </span><br><span class="line">但是如果重写整个原型对象：  </span><br><span class="line">function Person()&#123;  </span><br><span class="line">&#125;  </span><br><span class="line">var friend = new Person();  </span><br><span class="line">Person.prototype = &#123;  </span><br><span class="line">    constructor:Person,//此处需要注意  </span><br><span class="line">    name:&quot;Lucare&quot;,  </span><br><span class="line">    age:24,  </span><br><span class="line">    job:&quot;Engineer&quot;,  </span><br><span class="line">    sayName: function () &#123;  </span><br><span class="line">        alert(this.name);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line">friend.sayName();//error</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-原生对象的原型"><a href="#5-原生对象的原型" class="headerlink" title="5.原生对象的原型"></a>5.原生对象的原型</h3><p>　　原型对象的重要性不仅体现在创建自定义类型方面，就连所有原生的引用类型，都是采用这种模式创建的。所有原生引用类型(Object,Array,String)都在其构造函数的原型上定义了方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">alert（typeof Array.prototype.sort）;//&quot;function&quot;  </span><br><span class="line">alert（typeof String.prototype.substring）;//&quot;function&quot;  </span><br><span class="line">example:给基本包装类型String添加一个startWith()的方法  </span><br><span class="line">String.prototype.startWith = function ()&#123;  </span><br><span class="line">    return this.indexOf(text) == 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="四、组合使用构造函数和原型模式"><a href="#四、组合使用构造函数和原型模式" class="headerlink" title="四、组合使用构造函数和原型模式"></a>四、组合使用构造函数和原型模式</h2><p>　　创建自定义类型的最常见方式，就是组合使用构造函数模式与原型模式。构造函数模式用于定义实例属性，而原型模式用于定义方法和共享的属性。结果，每个实例都会有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存。另外，这种混合模式还支持向构造函数传递参数：集两种模式之长。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,job)&#123;  </span><br><span class="line">    this.name = name;  </span><br><span class="line">    this.age = age;  </span><br><span class="line">    this.job = job;  </span><br><span class="line">    this.friends = [&quot;Bob&quot;,&quot;Shell&quot;];  </span><br><span class="line">&#125;  </span><br><span class="line">Person.prototype = &#123;  </span><br><span class="line">    constructor:Person,  </span><br><span class="line">    sayName:function()&#123;  </span><br><span class="line">        alert(this.name);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="五、动态原型模式"><a href="#五、动态原型模式" class="headerlink" title="五、动态原型模式"></a>五、动态原型模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,job)&#123;  </span><br><span class="line">    this.name = name;  </span><br><span class="line">    this.age = age;  </span><br><span class="line">    this.job = job;  </span><br><span class="line">    if(typeof this.sayName() != &quot;function&quot;)&#123;  </span><br><span class="line">        Person.prototype.sayName = function()&#123;  </span><br><span class="line">            alert(this.name);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　在sayName方法不存在的情况下，才会将它添加到原型中。这段代码只会在除此调用构造函数时才会执行，此后，原型已经完成初始化。这里对原型所做的修改，能够立即在所有实例中得到反映。这种方法非常完美，其中if语句检查的可以是初始化之后应该存在的任何属性和方法–不必检查每个，只需其中一个即可。</p>
+<h2 id="六、寄生构造函数模式"><a href="#六、寄生构造函数模式" class="headerlink" title="六、寄生构造函数模式"></a>六、寄生构造函数模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;  </span><br><span class="line">    var o = new Object();  </span><br><span class="line">    o.name = name;  </span><br><span class="line">    o.age = age;  </span><br><span class="line">    o.job = job;  </span><br><span class="line">    o.sayName = function () &#123;  </span><br><span class="line">        alert(this.name);  </span><br><span class="line">    &#125;  </span><br><span class="line">    return o;  </span><br><span class="line">&#125;  </span><br><span class="line">var friend = new Person(&quot;Lucare&quot;,24,&quot;Engineer&quot;);  </span><br><span class="line">friend.sayName();</span><br></pre></td></tr></table></figure>
+<p>　　这个模式可以在特殊的情况下用来为对象创建构造函数。假设我们创建一个具有额外方法的特殊数组，由于不能直接修改Array数组，因此可以使用这个模式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function SpecialArray()&#123;  </span><br><span class="line">    var values = new Array();  </span><br><span class="line">    //添加值  </span><br><span class="line">    values.push.apply(values,arguments);  </span><br><span class="line">    //添加方法  </span><br><span class="line">    values.toPipedString = function()&#123;  </span><br><span class="line">        return this.join(&quot;|&quot;)  </span><br><span class="line">    &#125;  </span><br><span class="line">    return values;  </span><br><span class="line">&#125;  </span><br><span class="line">var colors = new SpecialArray(&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;);  </span><br><span class="line">alert(colors.toPipedString());//&quot;red|blue|green&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="七、稳妥构造函数模式"><a href="#七、稳妥构造函数模式" class="headerlink" title="七、稳妥构造函数模式"></a>七、稳妥构造函数模式</h2><p>　　稳妥对象：没有公共属性，而且方法也不引用this的对象。稳妥对象最适合在一些安全的环境中(这些环境会禁止使用this和new)，或者在防止数据被其他应用程序(如Mashup程序改动时使用)。与寄生构造函数相比有两点不同：一是新创建对象的实例方法不引用this;二是不使用new操作符调用构造函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;  </span><br><span class="line">    //创建要返回的对象  </span><br><span class="line">    var o = new Object();  </span><br><span class="line">    //可以在这里定义私有变量和函数  </span><br><span class="line">    //添加方法  </span><br><span class="line">    o.sayName = function () &#123;  </span><br><span class="line">        alert(this.name);  </span><br><span class="line">    &#125;  </span><br><span class="line">    return o;  </span><br><span class="line">&#125;  </span><br><span class="line">var friend = new Person(&quot;Lucare&quot;,24,&quot;Engineer&quot;);  </span><br><span class="line">friend.sayName();</span><br></pre></td></tr></table></figure>
+<hr>
+<p> –特此声明，此文为学习笔记，阅读书籍《JavaScript高级程序设计》所摘精华。</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/04/19/hello-world/" title="我的博客开启了">我的博客开启了</a></h2>
+                <p class="excerpt">
+                
+                这是我自己的世界。
+希望以后能坚持在这里发表一些生活感悟还有技术上的整理。
+愿明天更美好！
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-04-19T14:47:42.056Z" class="post-list__meta--date date">2016-04-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/04/19/hello-world/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    
+
+     
+</body>
+</html>
