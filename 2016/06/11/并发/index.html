@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>并发编程的几个知识点 | 你的指尖，有改变世界的力量</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="并发编程的几个知识点 | 你的指尖，有改变世界的力量">
+    <meta name="twitter:description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="并发编程的几个知识点 | 你的指尖，有改变世界的力量">
+    <meta property="og:description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    
+    <meta name="author" content="Lucare.Feng">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="你的指尖，有改变世界的力量" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/06/11/并发/"/>
+
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+<body class="home-template no-js">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 你的指尖，有改变世界的力量 的主页"><img src="/images/avatar.jpg" width="80" alt="你的指尖，有改变世界的力量 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 你的指尖，有改变世界的力量">你的指尖，有改变世界的力量</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/favourite">时光机</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/fengchangsheng" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/onlymonniya" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-slate"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-06-11T13:58:06.754Z" class="post-list__meta--date date">2016-06-11</time> &#8226; <span class="post-meta__tags tags">于&nbsp;</span>
+    </div>
+    <h1 class="post-title">并发编程的几个知识点</h1>
+  </header>
+
+  <section class="post">
+    <h2 id="一、可见性"><a href="#一、可见性" class="headerlink" title="一、可见性"></a>一、可见性</h2><blockquote>
+<p>在没有同步的情况下，编译器、处理器以及运行时等都可能对操作的执行顺序进行一些意想不到的调整。在缺乏足够同步的多线程程序中，要想对内存操作的执行顺序进行判断，几乎无法得出正确的结论。</p>
+</blockquote>
+<h3 id="非原子的64位操作"><a href="#非原子的64位操作" class="headerlink" title="非原子的64位操作"></a>非原子的64位操作</h3><p>　　当线程在没有同步的情况下读取变量时，可能会得到一个失效值，但至少这个值是由之前某个线程设置的值，而不是一个随机值，这种安全性保证也被称为最低安全性。最低安全性适用于绝大多数变量，但是存在一个例外：非volatile类型的64位数值变量(double和long)。Java内存模型要求，变量的读取操作和写入操作都必须是原子操作，但对于非volatile类型的long和double变量，JVM允许将64位的读操作或写操作分解为两个32位的操作。</p>
+<h3 id="volatile变量"><a href="#volatile变量" class="headerlink" title="volatile变量"></a>volatile变量</h3><p>　　java提供了一种弱的同步机制，即volatile变量，用来确保将变量的更新操作通知到其他线程。当把变量声明为volatile类型后，编译器和运行时都会注意到这个变量是共享的，因此不会将这个变量上的操作与其他内存操作一起重排序。volatile变量不会被缓存在寄存器或者对其他处理器不可见的地方，因此在读取volatile变量时总会返回最新写入的值。</p>
+<blockquote>
+<p>加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。</p>
+</blockquote>
+<h2 id="二、发布与逸出"><a href="#二、发布与逸出" class="headerlink" title="二、发布与逸出"></a>二、发布与逸出</h2><p>“发布”一个对象的意思是指，使对象能够在当前作用域之外的代码中使用。例如，将一个指向该对象的引用保存到其他代码可以访问的地方，或者在一个非私有的方法中返回该引用，或者将引用传递到其他类的方法中。当某个不应该发布的对象被发布时，这种情况被称为逸出。</p>
+<p>隐式地使this引用逸出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class ThisEscape&#123;</span><br><span class="line">    public ThisEscape(EventSource source)&#123;</span><br><span class="line">        source.registerListener(</span><br><span class="line">            new EventListener()&#123;</span><br><span class="line">                public void onEvent()&#123;</span><br><span class="line">                    doSomething(e);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>因为在这个内部类的实例中包含了对ThisEscape实例的隐含引用。</p>
+<blockquote>
+<p>不要在构造过程中使this引用逸出。</p>
+</blockquote>
+<h2 id="三、线程封闭"><a href="#三、线程封闭" class="headerlink" title="三、线程封闭"></a>三、线程封闭</h2><p>　　当访问共享的可变数据时，通常需要使用同步。一种避免使用同步的方式就是不共享数据，仅仅在单线程内访问数据，就不需要同步，这种技术被称为线程封闭。它是实现线程安全性最简单方式之一。常见的JDBC的Connection对象，由于大多数请求都是由单个线程采用同步的方式来处理，并且在Connection对象返回之前，连接池不会再将它分配给其他线程。因此，这种连接管理模式在处理请求时隐含地将Connection对象封闭在线程中。</p>
+<h3 id="Ad-hoc线程封闭"><a href="#Ad-hoc线程封闭" class="headerlink" title="Ad-hoc线程封闭"></a>Ad-hoc线程封闭</h3><p>Ad-hoc线程封闭是指，维护线程封闭的职责完全由程序实现来承担。例如可见性修饰符或局部变量，能将对象封闭到目标线程上。由于其封闭技术的脆弱性，因此在程序中尽量少用它，在可能的情况下，应该使用更强的线程封闭技术（例如，栈封闭或ThreadLocal类）。</p>
+<h3 id="栈封闭"><a href="#栈封闭" class="headerlink" title="栈封闭"></a>栈封闭</h3><p>在栈封闭中，只能通过局部变量才能访问对象。局部变量的固有属性之一就是封闭在执行线程中。它们位于执行线程的栈中，其他线程无法访问这个栈。</p>
+<h3 id="ThreadLocal类"><a href="#ThreadLocal类" class="headerlink" title="ThreadLocal类"></a>ThreadLocal类</h3><p>维持线程封闭性的一种更规范方法是使用ThreadLocal，这个类能使线程中的某个值与保存值的对象关联起来。其提供了get/set访问接口或方法，这些方法为每个使用该变量的线程都存着一份独立的副本，因此get总是返回由当前执行线程在调用set时设置的最新值。<br>ThreadLocal对象通常用于防止对可变的单实例变量或全局变量进行共享。例如，在单线程应用程序中可能会维持一个全局的数据库连接，并在程序启动时初始化这个连接对象，从而避免在调用每个方法时都要传递一个Connection对象。由于JDBC的连接对象不一定是线程安全的，因此，当多线程应用程序在没有协同的情况下使用全局变量时，就不是线程安全的。通过将JDBC的连接保存到ThreadLocal对象中，每个线程都会拥有属于自己的连接。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private static ThreadLocal&lt;Connection&gt; connectionHolder = new ThreadLocal&lt;Connection&gt;()&#123;</span><br><span class="line">    public Connection initialValue()&#123;</span><br><span class="line">        return DriverManager.getConnection(DB_URL);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">public static Connection getConnection()&#123;</span><br><span class="line">    return connectionHolder.get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四、不变性"><a href="#四、不变性" class="headerlink" title="四、不变性"></a>四、不变性</h2><p>如果某个对象在被创建后其状态就不能被修改，那么这个对象就称为不可变对象。线程安全性是不可变对象的固有属性之一，它们的不变性条件是由构造函数创建的，只要它们的状态不改变，那么这些不变性条件就能得以维持。</p>
+<blockquote>
+<p>不可变对象一定是线程安全的。</p>
+</blockquote>
+<p>当满足以下条件时，对象才是不可变的。</p>
+<blockquote>
+<p>对象创建以后其状态就不能修改。</p>
+<p>对象的所有域都是final类型</p>
+<p>对象是正确创建的（在对象的创建期间，this引用没有逸出）。</p>
+</blockquote>
+<h3 id="Final域"><a href="#Final域" class="headerlink" title="Final域"></a>Final域</h3><h3 id="使用volatile类型来发布不可变对象"><a href="#使用volatile类型来发布不可变对象" class="headerlink" title="使用volatile类型来发布不可变对象"></a>使用volatile类型来发布不可变对象</h3><h3 id="安全发布"><a href="#安全发布" class="headerlink" title="安全发布"></a>安全发布</h3>
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/05/11/singleton/" title="设计模式之单例模式">设计模式之单例模式</a></h2>
+                <p class="excerpt">
+                
+                饿汉式public class Singleton {
+
+    private static Singleton singleton = new Singleton();
+
+    private Singleton(){
+       System.out.println(&amp;quot;Singl
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-05-11T14:59:53.124Z" class="post-list__meta--date date">2016-05-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/05/11/singleton/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    
+
+     
+</body>
+</html>

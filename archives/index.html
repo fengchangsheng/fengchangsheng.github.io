@@ -154,6 +154,21 @@ var _hmt = _hmt || [];
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/06/11/并发/" title="link to post.title">并发编程的几个知识点</a></h2>
+      <p class="excerpt">
+    
+      一、可见性
+在没有同步的情况下，编译器、处理器以及运行时等都可能对操作的执行顺序进行一些意想不到的调整。在缺乏足够同步的多线程程序中，要想对内存操作的执行顺序进行判断，几乎无法得出正确的结论。
+
+非原子的64位操作　　当线程在没有同步的情况下读取变量时，可能会得到一个失效值，但至少这个值是由之前某个线程设置的值，而不是一个随机值，这种安全性保证也被称为最低安全性。最低安全性适用于绝大多数变量，但是存在一个例外：非volatile类型的64位数值变量(double和long)。Java内存模型要求
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-06-11T13:58:06.754Z" class="post-list__meta--date date">2016-06-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/11/并发/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/05/11/singleton/" title="link to post.title">设计模式之单例模式</a></h2>
       <p class="excerpt">
     
