@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>你的指尖，有改变世界的力量</title>
+    <title>Linux上maven私服(nexus)搭建 | 你的指尖，有改变世界的力量</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="你的指尖，有改变世界的力量">
+    <meta name="twitter:title" content="Linux上maven私服(nexus)搭建 | 你的指尖，有改变世界的力量">
     <meta name="twitter:description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="你的指尖，有改变世界的力量">
+    <meta property="og:title" content="Linux上maven私服(nexus)搭建 | 你的指尖，有改变世界的力量">
     <meta property="og:description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="你的指尖，有改变世界的力量" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com"/>
+    <link rel="canonical" href="http://yoursite.com/2016/06/25/Linux上maven私服(nexus)搭建/"/>
 
     
     <script>
@@ -148,48 +148,59 @@ var _hmt = _hmt || [];
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-06-25T14:09:26.804Z" class="post-list__meta--date date">2016-06-25</time> &#8226; <span class="post-meta__tags tags">于&nbsp;</span>
+    </div>
+    <h1 class="post-title">Linux上maven私服(nexus)搭建</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="一、下载nexus"><a href="#一、下载nexus" class="headerlink" title="一、下载nexus"></a>一、下载nexus</h3><p>推荐bundle版   安装简便  </p>
+<p>下载链接:<a href="http://www.sonatype.com/download-oss-sonatype" target="_blank" rel="external">http://www.sonatype.com/download-oss-sonatype</a></p>
+<h3 id="二、解压到服务器指定位置"><a href="#二、解压到服务器指定位置" class="headerlink" title="二、解压到服务器指定位置"></a>二、解压到服务器指定位置</h3><p>tar xvf  **.tar.gz -C 指定目录 </p>
+<h3 id="三、启动"><a href="#三、启动" class="headerlink" title="三、启动"></a>三、启动</h3><p>找到解压后的目录，进入bin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ94c9ft04jZ resin-file]# cd /home/build/nexus-2.13.0-01/bin</span><br><span class="line">[root@iZ94c9ft04jZ bin]# ./nexus start</span><br><span class="line"></span><br><span class="line">****************************************</span><br><span class="line">WARNING - NOT RECOMMENDED TO RUN AS ROOT</span><br><span class="line">****************************************</span><br><span class="line">Starting Nexus OSS...</span><br><span class="line">Nexus OSS is already running.</span><br><span class="line">[root@iZ94c9ft04jZ bin]# ./nexus start</span><br><span class="line">****************************************</span><br><span class="line">WARNING - NOT RECOMMENDED TO RUN AS ROOT</span><br><span class="line">****************************************</span><br><span class="line">Starting Nexus OSS...</span><br><span class="line">Nexus OSS is already running.</span><br></pre></td></tr></table></figure>
+<p>这里很可能要出现 说你环境配置的问题</p>
+<h4 id="1-你可以增加环境变量配置"><a href="#1-你可以增加环境变量配置" class="headerlink" title="1.你可以增加环境变量配置"></a>1.你可以增加环境变量配置</h4><p>自行百度</p>
+<h4 id="2-在命令行下输入："><a href="#2-在命令行下输入：" class="headerlink" title="2.在命令行下输入："></a>2.在命令行下输入：</h4><p>export RUN_AS_USER=root<br>然后执行，就不会再提示了</p>
+<p>检查启动完成后就可以用过浏览器访问了</p>
+<h3 id="四、仓库配置"><a href="#四、仓库配置" class="headerlink" title="四、仓库配置"></a>四、仓库配置</h3><p>一般情况下是创建宿主仓库，一个Releases，一个Snapshots，<br>分别代表发行版和快照版，可以根据项目名来创建，如：pname_releases  pname_snapshots  </p>
+<p>快照版设置为允许重复发布，就是可以不修改版本号，会覆盖掉旧的版本<br>而发行版一般设置为不允许重复发布，这样每次都会发布一个新版本，需要改版本号</p>
+<p>然后就是增加角色，给角色配置指定项目的权限，这些权限应该是系统自动配置了。你应该给它匹配上:<br><img src="http://7xvp2l.com1.z0.glb.clouddn.com/nexus_ex1.png" alt="image"></p>
+<p>最后就是创建用户了，给用户指定上面创建的角色。</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
     
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/06/25/Linux上maven私服(nexus)搭建/" title="link to post.title">Linux上maven私服(nexus)搭建</a></h2>
-      <p class="excerpt">
-    
-      一、下载nexus推荐bundle版   安装简便  
-下载链接:http://www.sonatype.com/download-oss-sonatype
-二、解压到服务器指定位置tar xvf  **.tar.gz -C 指定目录 
-三、启动找到解压后的目录，进入bin
-1234567891011121314[root@iZ94c9ft04jZ resin-file]# cd /home/build/nexus-2.13.0-01/bin[root@iZ94c9ft04jZ bin]# ./
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-06-25T14:09:26.804Z" class="post-list__meta--date date">2016-06-25</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/25/Linux上maven私服(nexus)搭建/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/06/11/并发/" title="link to post.title">并发编程的几个知识点</a></h2>
-      <p class="excerpt">
-    
-      一、可见性
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/06/11/并发/" title="并发编程的几个知识点">并发编程的几个知识点</a></h2>
+                <p class="excerpt">
+                
+                一、可见性
 在没有同步的情况下，编译器、处理器以及运行时等都可能对操作的执行顺序进行一些意想不到的调整。在缺乏足够同步的多线程程序中，要想对内存操作的执行顺序进行判断，几乎无法得出正确的结论。
 
-非原子的64位操作　　当线程在没有同步的情况下读取变量时，可能会得到一个失效值，但至少这个值是由之前某个线程设置的值，而不是一个随机值，这种安全性保证也被称为最低安全性。最低安全性适用于绝大多数变量，但是存在一个例外：非volatile类型的64位数值变量(double和long)。Java内存模型要求
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-06-11T13:58:06.754Z" class="post-list__meta--date date">2016-06-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/11/并发/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
+非原子的64位操作　　当线程在没有同步的情况下读取变量时，可能会得到一个失效值，但至少这个值是由之前某个
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-06-11T13:58:06.754Z" class="post-list__meta--date date">2016-06-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/11/并发/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-  </ol>
-
-
-
-</div>
-
+</section>
 
 
             <footer class="footer">
