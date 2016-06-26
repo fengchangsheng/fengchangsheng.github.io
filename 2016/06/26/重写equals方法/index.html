@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>重写equals方法 | 你的指尖，有改变世界的力量</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="重写equals方法 | 你的指尖，有改变世界的力量">
+    <meta name="twitter:description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="重写equals方法 | 你的指尖，有改变世界的力量">
+    <meta property="og:description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    
+    <meta name="author" content="Lucare.Feng">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="你的指尖，有改变世界的力量" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/06/26/重写equals方法/"/>
+
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+<body class="home-template no-js">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 你的指尖，有改变世界的力量 的主页"><img src="/images/avatar.jpg" width="80" alt="你的指尖，有改变世界的力量 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 你的指尖，有改变世界的力量">你的指尖，有改变世界的力量</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/favourite">时光机</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/fengchangsheng" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/onlymonniya" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-slate"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-06-26T03:49:41.536Z" class="post-list__meta--date date">2016-06-26</time> &#8226; <span class="post-meta__tags tags">于&nbsp;</span>
+    </div>
+    <h1 class="post-title">重写equals方法</h1>
+  </header>
+
+  <section class="post">
+    <p>　　事情的起因是这样，我买了一本effective Java，有天晚上随便翻了几页，正好看到了关于重写equals的部分，作者自己在每个重写的equals方法中都用到了instanceof方法，我也就看到这里。然后晚上看了下某个开源项目的代码，有人写了一个验证码类，并且重写了equals方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object obj) &#123;</span><br><span class="line">    if (this == obj) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    if (obj == null) &#123;//(1)</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    if (getClass() != obj.getClass()) &#123;//(2)</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    final ImageCode other = (ImageCode) obj;</span><br><span class="line">    if ((this.code == null) ? (other.code != null) : !this.code.equals(other.code)) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　我问他可不可以把(1)(2)处的判断替换成成这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (!(obj instanceof ImageCode))&#123;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　结果群里好几个人都说不行，有的说别人都是最上面的写法；有的说这是eclipse自动生成的，不可能有问题；当我追问为什么改成instanceof不行时，有人开始轰我了，说人家都在谈论大数据，我还在纠结这个，这就是差距。我不想鸟他，就问另一个前辈，人家告诉我，继承的时候可能出问题，instanceof父子类会满足条件，而属性在父类中会不存在，我觉得他说的有道理。接着我又去看书了，想弄清楚点，难道那些大牛都不知道这个问题？为什么他们还这样写？。</p>
+<p>　　通过看书我发现用instanceof还是最好的，他所说的父子类出错的情况不可能出现，如果只在父类中重写equals方法，只会丢失子类的属性，也就是子类的属性无法参与比较，这是编译期就能发现的错误，可控。但是你用getClass直接就否定了，直接返回false，反而这个会造成某些错误，比如你在子类中增加了一个计数方法，其他不变，这个也负责生成验证码，你想它code不重复那是不可能的，因为它们就压根不会比较code，getClass那关就过不了，它就认为两个生成的验证码不一样了，但是他们可能是一样的code。</p>
+<p>我查了下JDK，发现很多重写的equals都用instanceof做判断。然后我到stackoverflow去提问，人家直接给我指了一个已经提过的问题给我看：</p>
+<p><img src="http://7xvp2l.com1.z0.glb.clouddn.com/nexus_ex2.png" alt="image"></p>
+<p>那再看看Effective Java怎么说的:</p>
+<blockquote>
+<p>实现高质量equals方法的诀窍:  </p>
+<p>1.使用==操作符检查“参数是否为这个对象的引用”。如果是，则返回true。这只不过是一种性能优化，如果比较操作有可能很昂贵，就值得这么做。</p>
+<p>2.使用instanceof操作符检查“参数是否为正确的类型”。如果不是，则返回false。一般说来，所谓正确的类型，是指equals方法所在的那个类。有些情况下，是指该类所实现 的某个接口。如果类实现的接口改进了equals约定，允许在实现了该接口的类之间进行比较，那么就使用接口。集合接口具有这样的特性。</p>
+<p>3.把参数转换成正确的类型。因为转换之前进行过instanceof测试，所以确保会成功。</p>
+<p>4.对于该类中的每个关键域，检查参数中的域是否与该对象中对应的域相匹配。如果这些测试全部成功，则返回true,否则返回false。如果第二步中的类型是个接口，就必须通过接口方法访问参数中的域；如果该类型是个类，也许就能直接访问参数中的域，这要取决于他们的可访问性。</p>
+<p>对于既不是float也不是double类型的基本类型域，可以使用==操作符进行比较，对于float域，可以使用Float.compare方法，对于double域，可以使用Double.compare。对于数组域，则要把以上原则应用到每个元素上，Arrays.equals方法也行。</p>
+<p>为了避免导致NullPointerException异常，则使用下面的习惯用法来比较这样的域：<br>(field == null? obj.field == null:field.equals(obj.field))</p>
+<p>如果field和obj.field通常是相同的对象引用，那么下面的做法就会更快一些：<br>(field == obj.field || (field != null &amp;&amp; field.equals(obj.field)))</p>
+<p>5.当你编写完成了equals方法后，应该问自己三个问题：它是否是对成的、传递的、一致的？并且不要只是自问，还要编写单元测试来检验这些特性！如果答案是否定的，就要找出原因，再相应地修改equals方法的代码。当然，equals方法也必须满足其他两个特性(自反性和非空性)，但这两种特性通常会自动满足。</p>
+</blockquote>
+<p>　　所以我认为重写equals方法没那么简单，要么不重写，要写就要把它写对。如果将来我要重写equals方法，我会直接使用instanceof。如果出现了错误，我也能准确定位到这个方法。</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/06/25/Linux上maven私服(nexus)搭建/" title="Linux上maven私服(nexus)搭建">Linux上maven私服(nexus)搭建</a></h2>
+                <p class="excerpt">
+                
+                一、下载nexus推荐bundle版   安装简便  
+下载链接:http://www.sonatype.com/download-oss-sonatype
+二、解压到服务器指定位置tar xvf  **.tar.gz -C 指定目录 
+三、启动找到解压后的目录，进入bin
+123456789101
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-06-25T14:09:26.804Z" class="post-list__meta--date date">2016-06-25</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/25/Linux上maven私服(nexus)搭建/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    
+
+     
+</body>
+</html>
