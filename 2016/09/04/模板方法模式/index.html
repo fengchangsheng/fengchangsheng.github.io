@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>设计模式之模板方法模式 | 你的指尖，有改变世界的力量</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="设计模式之模板方法模式 | 你的指尖，有改变世界的力量">
+    <meta name="twitter:description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="设计模式之模板方法模式 | 你的指尖，有改变世界的力量">
+    <meta property="og:description" content="风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！">
+
+    
+    <meta name="author" content="Lucare.Feng">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="你的指尖，有改变世界的力量" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/09/04/模板方法模式/"/>
+
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+<body class="home-template no-js">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 你的指尖，有改变世界的力量 的主页"><img src="/images/avatar.jpg" width="80" alt="你的指尖，有改变世界的力量 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 你的指尖，有改变世界的力量">你的指尖，有改变世界的力量</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">风能吹走纸张却吹不走蝴蝶，生命的力量在于不顺从！</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/favourite">时光机</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/fengchangsheng" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/onlymonniya" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-slate"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-09-04T14:04:56.520Z" class="post-list__meta--date date">2016-09-04</time> &#8226; <span class="post-meta__tags tags">于&nbsp;</span>
+    </div>
+    <h1 class="post-title">设计模式之模板方法模式</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="一、模板方法模式"><a href="#一、模板方法模式" class="headerlink" title="一、模板方法模式"></a>一、模板方法模式</h3><p>　　模板方法模式：在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以在不改变算法结构的情况下，重新定义算法的某些步骤。</p>
+<p>　　这个模式用来创建一个算法的模板，模板就是一个方法，这个方法将算法定义成一组步骤，其中的任何步骤都可以是抽象的，由子类负责实现，这可以确保算法的结构保持不变，同时由子类提供部分实现。</p>
+<p>　　模板方法声明为final  以免子类改变这个算法的顺序</p>
+<p><img src="http://7xvp2l.com1.z0.glb.clouddn.com/muban1.png" alt="image"></p>
+<p>示例代码(用户注册逻辑)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractRegisterLogic implements IRegisterLogic &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public RegisterResp register(RegisterReq req) &#123;</span><br><span class="line">        Date now = new Date();</span><br><span class="line">        String addTime = TimeUtils.stringOfUnixtimestamp(now);</span><br><span class="line"></span><br><span class="line">        //组装用户对象</span><br><span class="line">        User u = createUser(now, req);</span><br><span class="line"></span><br><span class="line">        //检测对象是否合法</span><br><span class="line">        checkUserValid(u);</span><br><span class="line"></span><br><span class="line">        //如果输入了邮箱则创建用户激活信息</span><br><span class="line">        UserActive active = null;</span><br><span class="line">        if (StringUtil.isNotEmpty(u.getEmail())) &#123;</span><br><span class="line">            active = createUserActive(u, addTime);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //注册</span><br><span class="line">        Pair&lt;User, UserActive&gt; pair = registerNow(u, active);</span><br><span class="line">        User user = pair.getFirst();</span><br><span class="line"></span><br><span class="line">        // 完成注册</span><br><span class="line">        registerFinish(user, active, req);</span><br><span class="line"></span><br><span class="line">        return new RegisterResp(pair.getFirst(), pair.getSecond(), now);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 创建用户对象</span><br><span class="line">     *</span><br><span class="line">     * @param now</span><br><span class="line">     * @param req</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    private User createUser(Date now, RegisterReq req) &#123;</span><br><span class="line">        User user = new User();</span><br><span class="line"></span><br><span class="line">        String time = TimeUtils.stringOfUnixtimestamp(now);</span><br><span class="line">        user.setCreatetime(time);</span><br><span class="line">        user.setUpdatetime(time);</span><br><span class="line"></span><br><span class="line">        createUserAssemble(req, user);</span><br><span class="line">        return user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户变化的部分</span><br><span class="line">     *</span><br><span class="line">     * @param req</span><br><span class="line">     * @param user</span><br><span class="line">     */</span><br><span class="line">    protected abstract void createUserAssemble(RegisterReq req, User user);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 检测用户是否合法</span><br><span class="line">     *</span><br><span class="line">     * @param user</span><br><span class="line">     */</span><br><span class="line">    protected abstract void checkUserValid(User user);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 是否需要激活步骤，默认不需要。即返回NULL</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    protected UserActive createUserActive(User user, String addTime) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 注册结束</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    protected void registerFinish(User u, UserActive active, RegisterReq req) &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 可以由子类提供</span><br><span class="line">     *</span><br><span class="line">     * @param u</span><br><span class="line">     * @param active</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    protected Pair&lt;User, UserActive&gt; registerNow(User u, UserActive active) &#123;</span><br><span class="line">        // 将用户写入表</span><br><span class="line">        Pair&lt;User, UserActive&gt; pair = new Pair&lt;User, UserActive&gt;();</span><br><span class="line"></span><br><span class="line">        DBClient dbclient = DBClientAccessor.getDefaultClient();</span><br><span class="line">        User user = dbclient.findObject(User.class, &quot;phone = ? &quot;, u.getPhone());</span><br><span class="line">        if (user != null) &#123;</span><br><span class="line">            dbclient.update(&quot;update t_user_user set password = ?,authphone = 1&quot;,u.getPassword());</span><br><span class="line">            pair.setFirst(user);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Long uId = dbclient.insertObject(u);</span><br><span class="line">            u.setId(uId.intValue());</span><br><span class="line">            if (active != null) &#123;</span><br><span class="line">                dbclient.insertObject(active);</span><br><span class="line">                pair.setSecond(active);</span><br><span class="line">            &#125;</span><br><span class="line">            pair.setFirst(u);</span><br><span class="line">        &#125;</span><br><span class="line">        return pair;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个注册分为多种类型，最常见的有手机和邮箱吧，这两种方式可以创建两个类，继承这个抽象的模板方法。</p>
+<h3 id="二、钩子方法："><a href="#二、钩子方法：" class="headerlink" title="二、钩子方法："></a>二、钩子方法：</h3><p><img src="http://7xvp2l.com1.z0.glb.clouddn.com/muban2.png" alt="image"></p>
+<p>钩子可以作为条件控制  影响抽象类中的算法流程<br>适用场景：子类必须提供算法实现时使用抽象类   如果算法的这个部分是可选的则使用钩子。</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/06/26/重写equals方法/" title="重写equals方法">重写equals方法</a></h2>
+                <p class="excerpt">
+                
+                　　事情的起因是这样，我买了一本effective Java，有天晚上随便翻了几页，正好看到了关于重写equals的部分，作者自己在每个重写的equals方法中都用到了instanceof方法，我也就看到这里。然后晚上看了下某个开源项目的代码，有人写了一个验证码类，并且重写了equals方法：
+12
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-06-26T03:49:41.536Z" class="post-list__meta--date date">2016-06-26</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/26/重写equals方法/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    
+
+     
+</body>
+</html>
